@@ -1,52 +1,32 @@
 package com.kindredgroup.unibetlivetest.service;
 
 import com.kindredgroup.unibetlivetest.entity.Selection;
-import com.kindredgroup.unibetlivetest.repository.SelectionRepository;
 import com.kindredgroup.unibetlivetest.types.SelectionState;
-import com.kindredgroup.unibetlivetest.utils.Helpers;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
-import java.util.stream.IntStream;
 
-@RequiredArgsConstructor
-@Component
-@Log4j2
-public class SelectionService {
+public interface SelectionService {
 
-    private final SelectionRepository selectionRepository;
+	/**
+	 * 1. Récupère toute les selections ouvertes 2. Mis à jour la cote aléatoirement
+	 */
 
-    /**
-     * 1. Récupère toute les selections ouvertes
-     * 2. Mis à jour la cote aléatoirement
-     */
+	Long updateOddsRandomly();
 
-    public Long updateOddsRandomly() {
-        final List<Selection> selectionsOpened = selectionRepository.getSelectionByStateEquals(SelectionState.OPENED);
-        return selectionsOpened.isEmpty() ? 0 : selectionsOpened
-                .stream()
-                .map(selection -> selection.setCurrentOdd(Helpers.updateOddRandomly(selection.getCurrentOdd())))
-                .map(selectionRepository::save)
-                .count();
-    }
+	/**
+	 * 1. Récupère toute les selections ouvertes 2. Ferme 5 sélections
+	 * aléatoirement.
+	 */
 
-    /**
-     * 1. Récupère toute les selections ouvertes
-     * 2. Ferme 5 sélections aléatoirement.
-     */
+	Long closeOddsRandomly();
 
-    public Long closeOddsRandomly() {
-        final List<Selection> selectionsOpened = selectionRepository.getSelectionByStateEquals(SelectionState.OPENED);
-        return selectionsOpened.isEmpty() ? 0 : IntStream
-                .range(0, 5)
-                .mapToObj(i -> selectionRepository.save(
-                        selectionsOpened.get(Helpers.getRandomIndex(0, selectionsOpened.size()))
-                                .setState(SelectionState.CLOSED)
-                                .setResult(Helpers.setResultRandomly())))
-                .count();
-    }
-
+	/**
+	 * Récupére la list des selections liés à un event avec un state donné
+	 * 
+	 * @param eventId l'id de l'event concerné
+	 * @param state   l'état des selections souhaitées ( donnée optionnelle )
+	 * @return la list des selections lié à l'event , avec le state renseigné ,
+	 *         sinon on récupére tout par défaut
+	 */
+	List<Selection> getEventSelection(Long eventId, SelectionState state);
 
 }

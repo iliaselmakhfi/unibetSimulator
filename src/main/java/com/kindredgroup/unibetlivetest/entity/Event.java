@@ -30,7 +30,7 @@ public class Event {
     @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
 
-    @JsonIgnore
-    @OneToMany(targetEntity=Market.class, mappedBy="event", fetch = FetchType.LAZY)
-    private List<Market> markets = new ArrayList<>();
+	@JsonIgnore
+	@OneToMany(targetEntity = Market.class, mappedBy = "event", fetch = FetchType.LAZY)
+	private List<Market> markets = new ArrayList<>();
 }

@@ -26,8 +26,8 @@ public class Customer {
     @Column(name = "balance")
     private BigDecimal balance;
 
-    @JsonIgnore
-    @OneToMany(targetEntity = Bet.class, mappedBy = "customer", fetch = FetchType.LAZY)
-    private List<Bet> bets = new ArrayList<>();
+	@JsonIgnore
+	@OneToMany(targetEntity = Bet.class, mappedBy = "customer", fetch = FetchType.LAZY)
+	private List<Bet> bets = new ArrayList<>();
 
 }

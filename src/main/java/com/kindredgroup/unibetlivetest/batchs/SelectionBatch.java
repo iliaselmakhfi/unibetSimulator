@@ -16,13 +16,13 @@ public class SelectionBatch {
 	@Autowired
     private final SelectionService selectionService;
 
-    @Scheduled(fixedRate = 5000)
-    public void updateOddsRandomly() {
-        log.info("{} selection(s) updated randomly.", selectionService.updateOddsRandomly());
+    @Scheduled(fixedRate = 1000 * 5)
+    public final void updateOddsRandomly() {
+		log.info("{} selection(s) updated randomly.", selectionService.updateOddsRandomly());
     }
 
     @Scheduled(fixedRate = 1000 * 60)
-    public void closeOddsRandomly() {
+    public final void closeOddsRandomly() {
         log.info("{} selections(s) closed randomly.", selectionService.closeOddsRandomly());
     }
 

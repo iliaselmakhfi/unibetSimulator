@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,21 +17,19 @@ import java.util.List;
 @Accessors(chain = true)
 public class Market {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    @OneToMany(targetEntity=Selection.class, mappedBy="market", fetch = FetchType.LAZY)
-    private List<Selection> selections = new ArrayList<>();
+	@OneToMany(targetEntity = Selection.class, mappedBy = "market", fetch = FetchType.LAZY)
+	private List<Selection> selections = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "event_id")
-    Event event;
-
-
-
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	private Event event;
 
 }
