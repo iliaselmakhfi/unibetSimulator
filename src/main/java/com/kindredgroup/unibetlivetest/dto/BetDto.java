@@ -1,10 +1,9 @@
 package com.kindredgroup.unibetlivetest.dto;
 
+import java.math.BigDecimal;
+
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
 @Accessors(chain = true)

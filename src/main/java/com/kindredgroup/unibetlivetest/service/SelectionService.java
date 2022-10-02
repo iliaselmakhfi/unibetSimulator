@@ -1,8 +1,9 @@
 package com.kindredgroup.unibetlivetest.service;
 
+import java.util.List;
+
 import com.kindredgroup.unibetlivetest.entity.Selection;
 import com.kindredgroup.unibetlivetest.types.SelectionState;
-import java.util.List;
 
 public interface SelectionService {
 

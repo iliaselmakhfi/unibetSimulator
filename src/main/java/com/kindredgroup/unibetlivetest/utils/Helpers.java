@@ -1,11 +1,9 @@
 package com.kindredgroup.unibetlivetest.utils;
 
-import com.kindredgroup.unibetlivetest.types.SelectionResult;
-import lombok.extern.log4j.Log4j2;
-
 import java.math.BigDecimal;
 
-@Log4j2
+import com.kindredgroup.unibetlivetest.types.SelectionResult;
+
 public final class Helpers {
 
 	private Helpers() {

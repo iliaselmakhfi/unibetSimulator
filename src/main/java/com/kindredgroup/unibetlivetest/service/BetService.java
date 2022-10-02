@@ -13,7 +13,7 @@ public interface BetService {
 	 * @param customer  Client qui souhaite ouvrir un Bet
 	 * @param selection la selection concernée par le Bet
 	 */
-	void checkAndAddBetForCustomer(BetDto bet, Customer customer) throws CustomException;
+	void checkAndAddBetForCustomer(BetDto betDto, Customer customer) throws CustomException;
 
 	/**
 	 * Paiement des bets des selections terminées

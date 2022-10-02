@@ -19,9 +19,11 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(Urls.BETS)
+@RequestMapping(Urls.BASE_PATH)
 @CrossOrigin(origins = "*")
 public class BetApi {
+
+	private static final String CUSTOMER_PSEUDO = "unibest";
 
 	@Autowired
 	private final CustomerService customerService;
@@ -30,9 +32,9 @@ public class BetApi {
 	private final BetService betService;
 
 	@PostMapping(Urls.ADD_BET)
-	public void addBet(@RequestBody BetDto bet) {
-		Customer customer = customerService.findCustomerByPseudo("unibest");
-		log.debug("Check And add Bet for Selection {} and for Customer {}", bet.getSelectionId(), customer.getId());
-		betService.checkAndAddBetForCustomer(bet, customer);
+	public void addBet(@RequestBody BetDto betDto) {
+		Customer customer = customerService.findCustomerByPseudo(CUSTOMER_PSEUDO);
+		log.debug("Check And add Bet for Selection {} and for Customer {}", betDto.getSelectionId(), customer.getId());
+		betService.checkAndAddBetForCustomer(betDto, customer);
 	}
 }

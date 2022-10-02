@@ -1,14 +1,13 @@
 package com.kindredgroup.unibetlivetest.exception;
 
-import com.kindredgroup.unibetlivetest.dto.ExceptionDto;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.servlet.http.HttpServletRequest;
+import com.kindredgroup.unibetlivetest.dto.ExceptionDto;
 
 @ControllerAdvice
 @RequestMapping(produces = "application/vnd.error+json")

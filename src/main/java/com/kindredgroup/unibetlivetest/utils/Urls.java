@@ -9,7 +9,7 @@ public interface Urls {
 	String SELECTIONS = EVENTS + "/{id}/selections";
 
 	/** bets api **/
-	String BETS = "bets";
+	String BETS = "/bets";
 	String ADD_BET = BETS + "/add";
 
 	/** customers apis **/

@@ -1,8 +1,5 @@
 package com.kindredgroup.unibetlivetest.api;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +18,9 @@ import com.kindredgroup.unibetlivetest.service.SelectionService;
 import com.kindredgroup.unibetlivetest.types.ExceptionType;
 import com.kindredgroup.unibetlivetest.types.SelectionState;
 import com.kindredgroup.unibetlivetest.utils.Urls;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Log4j2
