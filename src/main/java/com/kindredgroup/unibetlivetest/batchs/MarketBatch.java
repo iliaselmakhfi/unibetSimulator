@@ -15,7 +15,7 @@ public class MarketBatch {
 	@Autowired
 	private final BetService betService;
 
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRateString = "${job.payBet.Scheduled}")
 	public final void payerLesParisBatch() {
 		betService.PayBets();
 	}
